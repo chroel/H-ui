@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="render" content="webkit|ie-comp|ie-stand">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="Bookmark" href="./images/favicon.ico">
+	<link rel="Shortcut Icon" href="./images/favicon.ico" type="image/x-icon">
+	<!--[if lt IE 9]
+	<script type="text/javascript" src="lib/html5.js"></script>
+	<script type="text/javascript" src="lib/respond.min.js"></script>
+	<script type="text/javascript" src="lib/PIE-2.0beta1/PIE_IE678.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" href="css/H-ui.min.css" type="text/css">
+	<link rel="stylesheet" href="css/H-ui.admin.css" type="text/css">
+	<link rel="stylesheet" href="lib/Hui-iconfont/1.0.7/iconfont.css" type="text/css">
+	<!--[if IE 6]
+	<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js"></script>
+	<script>DD_belatedPNG.fix('.pngfix,.icon');</script>
+	<![endif]-->
+	<title>品牌管理</title>
+</head>
+<body>
+	<nav class="breadcrumb">
+		<i class="Hui-iconfont">&#xe625;</i>
+		首页
+		<i class="Hui-iconfont">&#xe6d7;</i>
+		产品管理
+		<i class="Hui-iconfont">&#xe6d7;</i>
+		品牌管理
+		<a href="javascript:location.replace(location.href)" class="btn btn-success radius r mr-20 mt-5" title="刷新">
+			<i class="Hui-iconfont">&#xe68f;</i>
+		</a>
+	</nav>
+	<div class="pd-20">
+		<div class="text-c">
+			<input type="text" class="input-text" placeholder="分类名称" style="width:120px;">
+			<span class="btn-upload">
+				<input type="text" class="input-text upload-url" readonly title="未选择文件" style="width:200px">
+			 	<a style="z-index:2;" href="javascript:void();" class="btn btn-primary">
+				    <i class="iconfont">&#xe642;</i> 浏览文件
+				    <input type="file" multiple name="file_0" class="input-file">
+			  	</a>
+			</span>
+			<span class="select-box" style="width:150px;">
+				<select class="select" size="1" name="">
+				    <option value="1" selected>国内品牌</option>
+				    <option value="2">国外品牌</option>
+				</select>
+			</span>
+			<a href="javascript:;" class="btn btn-success">
+				<i class="Hui-iconfont">&#xe600;</i>添加
+			</a>
+		</div>
+		<div class="cl pd-5 bg-1 bk-gray mt-20">
+			<a href="javascript:;" class="btn btn-danger radius">
+				<i class="Hui-iconfont">&#xe6e2;</i>
+				批量删除
+			</a>
+			<span class="r">共有数据：54条</span>
+		</div>
+	</div>
+	<div class="mt-20 ml-20 mr-20">
+		<table class="table table-border table-bordered table-hover table-bg table-sort">
+			<thead class="text-c">
+				<tr>
+					<th width="25"><input type="checkbox"></th>
+					<th width="60">ID</th>
+					<th width="60">排序</th>
+					<th width="200">LOGO</th>
+					<th width="120">品牌名称</th>
+					<th>具体描述</th>
+					<th width="100">操作</th>
+				</tr>
+			</thead>
+			<tbody class="text-c">
+				<tr>
+					<td><input type="checkbox"></td>
+					<td>1</td>
+					<td><input type="text" class="input-text text-c" style="width:50px;" value="1"></td>
+					<td><img src="temp/brand/dongpeng.jpeg"></td>
+					<td class="text-l"><img title="国内品牌" src="images/gq/cn.gif"> 东鹏</td>
+					<td class="text-l">	东鹏陶瓷被评为“中国名牌”、“国家免检产品”、“中国驰名商标”、http://www.dongpeng.net/</td>
+					<td class="td-manage">
+						<a href="javascript:;" title="编辑" style="text-decoration:none" onclick="product_brand_edit('品牌编辑','coding.html','1')">
+							<i class="Hui-iconfont">&#xe6df;</i>
+						</a>
+						<a href="javascript:;" title="删除" style="text-decoration:none" onClick="product_brand_del(this,'10001')">
+							<i class="Hui-iconfont">&#xe6e2;</i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script> 
+	<script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+	<script type="text/javascript" src="lib/layer/2.1/layer.js"></script>
+	<script type="text/javascript" src="js/H-ui.js"></script>
+	<script type="text/javascript" src="js/H-ui.admin.js"></script>
+	<script>
+		$('.table-sort').dataTable({
+			"aaSorting":[[1,"desc"]],//数据排序
+			"bStateSave":true,//状态保存，使用了翻页或者改变了每页显示数据数量，会保存在cookie中，下回访问时会显示上一次关闭页面时的内容。
+			"bPaginate":true,//翻页功能
+			"bLengthChange":true,//改变每页显示数据数量
+			"bSort":true,//排序功能
+			"bInfo":true,//页脚信息
+		});
+		/*品牌编辑*/
+		function product_brand_edit(title,url,id){
+			var index = layer.open({
+				type: 2,
+				title: title,
+				content: url
+			});
+			layer.full(index);
+		}
+		/*品牌删除*/
+		function product_brand_del(obj,id){
+			layer.confirm('删除此品牌？',function(index){
+				$(obj).parents("tr").remove();
+				layer.msg("已删除！");	
+			})
+		}
+	</script>
+</body>
+</html>

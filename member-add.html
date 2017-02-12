@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="render" content="webkit|ie-comp|ie-stand">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="Bookmark" href="./images/favicon.ico">
+	<link rel="Shortcut Icon" href="./images/favicon.ico" type="image/x-icon">
+	<!--[if lt IE 9]
+	<script type="text/javascript" src="lib/html5.js"></script>
+	<script type="text/javascript" src="lib/respond.min.js"></script>
+	<script type="text/javascript" src="lib/PIE-2.0beta1/PIE_IE678.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" href="css/H-ui.min.css" type="text/css">
+	<link rel="stylesheet" href="css/H-ui.admin.css" type="text/css">
+	<link rel="stylesheet" href="lib/Hui-iconfont/1.0.7/iconfont.css" type="text/css">
+	<link href="lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+	<!--[if IE 6]
+	<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js"></script>
+	<script>DD_belatedPNG.fix('.pngfix,.icon');</script>
+	<![endif]-->
+	<title>用户添加</title>
+</head>
+<body>
+	<div class="pd-20">
+		<form action="" method="post" class="form form-horizontal" id="form-member-add">
+			<div class="row cl">
+				<div class="form-label col-3">
+					<span class="c-red">*</span>用户名：
+				</div>
+				<div class="formControls col-5">
+					<input type="text" class="input-text" id="member-name" name="member-name" datatype="*2-16" nullmsg="用户名不能为空！">
+				</div>
+				<div class="col-4"></div>
+			</div>
+			<div class="row cl">
+				<div class="form-label col-3">
+					<span class="c-red">*</span>性别：
+				</div>
+				<div class="formControls col-5 skin-minimal">
+					<div class="radio-box">
+						<input type="radio" id="radio-m" name="gender" nullmsg="请选择性别！" datatype="*" >
+						<label for="radio-m">男</label>
+					</div>
+					<div class="radio-box">
+						<input type="radio" id="radio-wm" name="gender" nullmsg="请选择性别！">
+						<label for="radio-wm">女</label>
+					</div>
+					<div class="radio-box">
+						<input type="radio" id="radio-s" name="gender" nullmsg="请选择性别！">
+						<label for="radio-s">保密</label>
+					</div>
+				</div>
+				<div class="col-4"></div>
+			</div>
+			<div class="row cl">
+				<div class="form-label col-3">
+					<span class="c-red">*</span>手机：
+				</div>
+				<div class="formControls col-5">
+					<input type="text" class="input-text" nullmsg="手机不能为空！" datatype="*" >
+				</div>
+				<div class="col-4"></div>
+			</div>
+			<div class="row cl">
+				<div class="form-label col-3">
+					<span class="c-red">*</span>邮箱：
+				</div>
+				<div class="formControls col-5">
+					<input type="text" class="input-text" placeholder="@" name="email" id="email" datatype="e" nullmsg="请输入邮箱！">
+				</div>
+				<div class="col-4"></div>
+			</div>
+			<div class="row cl">
+				<div class="form-label col-3">附件：</div>
+				<div class="formControls col-5">
+					<span class="btn-upload form-group">
+						<input type="text" class="input-text upload-url radius" name="uploadfile-l" readonly>
+						<a href="javascript:;" class="btn btn-primary radius upload-btn">
+							<i class="Hui-iconfont">&#xe642;</i> 浏览文件
+						</a>
+						<input type="file" multiple name="file-1" class="input-file">
+					</span>
+				</div>
+				<div class="col-4"></div>
+			</div>
+			<div class="row cl">
+				<div class="form-label col-3">所在城市：</div>
+				<div class="formControls col-5 skin-minimal">
+					<div class="select-box">
+						<select name="" id="" class="select" nullmsg="请选择所在城市！" datatype="*" >
+							<option value="0">请选择城市</option>
+							<option value="1">北京</option>
+							<option value="2">上海</option>
+							<option value="3">广州</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-4"></div>
+			</div>
+			<div class="row cl">
+				<div class="form-label col-3">备注：</div>
+				<div class="formControls col-5">
+					<textarea name="" id="" class="textarea" placeholder="说点什么...最少输入10个字符" datatype="*" nullmsg="备注不能为空！"></textarea>
+					<span class="textarea-numberbar"><em class="textarea-length">0</em>/100</span>
+				</div>
+				<div class="col-4"></div>
+			</div>
+			<div class="row cl">
+				<div class="col-9 col-offset-3">
+					<input type="submit" class="btn btn-primary radius" value="提交">
+				</div>
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/icheck/jquery.icheck.min.js"></script> 
+	<script type="text/javascript" src="lib/layer/2.1/layer.js"></script>
+	<script type="text/javascript" src="lib/Validform/5.3.2/Validform.min.js"></script>
+	<script type="text/javascript" src="js/H-ui.js"></script>
+	<script type="text/javascript" src="js/H-ui.admin.js"></script>
+	<script>
+
+		$(function(){
+			$('.skin-minimal input').iCheck({
+				checkboxClass: 'icheckbox-blue',
+				radioClass: 'iradio-blue',
+				increaseArea: '20%'
+			});
+			
+			$("#form-member-add").Validform({
+				tiptype:2,
+				callback:function(form){
+					form[0].submit();
+					var index = parent.layer.getFrameIndex(window.name);
+					parent.$('.btn-refresh').click();
+					parent.layer.close(index);
+				}
+			});
+		});
+	</script>
+</body>
+</html>
